@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache,createHttpLink } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
 import SearchBooks from "./pages/SearchBooks";
@@ -33,7 +33,7 @@ function App() {
       <Router>
       <>
         <Navbar />
-        <Routes>
+        <Switch>
           <Route 
             path='/' 
             element={<SearchBooks />} 
@@ -46,7 +46,7 @@ function App() {
             path='*'
             element={<h1 className='display-2'>Wrong page!</h1>}
           />
-        </Routes>
+        </Switch>
       </>
     </Router>
 
