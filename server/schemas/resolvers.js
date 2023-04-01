@@ -6,10 +6,12 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       // check if users exist
+      console.log(context.user)
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id }).select(
           "p_as_sw_ord"
         );
+        console.log(userData)
         return userData;
       }
       throw new AuthenticationError("Not logged in");
